@@ -23,22 +23,19 @@ configuration file::
 See the `Uptime Robot API documentation`_ for details.
 
 
-Set up HTTP service
+Set up as docker container
 -------------------
 
-Then you need to set up an HTTP server, either with a dedicated process::
+You can run the exporter as a docker container.
+Either use a config file:
 
-    $ uptimerobot_exporter --host localhost --port 9429 --config /path/to/config
+.. code-block:: bash
+    $ docker build -t uptimerobot_exporter .
+    $ docker run --rm -p 9429:9429 -v /path/to/config.ini:/config.ini uptimerobot_exporter uptime_robot_exporter --config /config.ini
 
-or as a CGI script, if you have infrastructure for that set up anyway.
-Here's an example apache configuration snippet to do this::
-
-    ScriptAlias /metrics/uptimerobot /path/to/uptimerobot_exporter_cgi
-    <Location /metrics/uptimerobot>
-      SetEnv PROMETHEUS_UPTIMEROBOT_CONFIG /path/to/config
-      # SetEnv PROMETHEUS_UPTIMEROBOT_LOGFILE /path/to/log  # optional, for debugging
-    </Location>
-
+Or use environment variables:
+.. code-block:: bash
+    $ docker run --rm -p 9429:9429 -e UPTIMEROBOT_API_KEY=123456789 uptimerobot_exporter uptime_robot_exporter
 
 Configure Prometheus
 --------------------

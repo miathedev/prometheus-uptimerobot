@@ -1,0 +1,14 @@
+services:
+  uptimerobot_collector:
+    container_name: uptimerobot_collector
+    hostname: uptimerobot_collector
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+     - UPTIMEROBOT_API_KEY=apikey
+    ports:
+      - 127.0.0.1:9429:9429
+    #volumes:
+    #  - ./config.ini:/etc/config.ini:ro
+    restart: unless-stopped

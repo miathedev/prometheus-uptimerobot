@@ -1,11 +1,11 @@
 [project]
 name = "ws.prometheus_uptimerobot"
 description = "Export uptimerobot.com monitor results as prometheus.io metrics"
+dynamic = ["dependencies"]
 
-dependencies = [
-  "prometheus-client",
-  "requests",
-]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
 optional-dependencies = {test=[
   "pytest",
   "pytest-cov",

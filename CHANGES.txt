@@ -3,6 +3,18 @@ CHANGES
 
 .. towncrier release notes start
 
+1.4.0 (2025-01-27)
+------------------
+
+Changes
++++++++
+- Rewrite for flask
+- Add vscode debug config
+- Remove tests (might be added back in future)
+- Rewrite for Docker support
+
+
+
 1.3.0 (2023-04-04)
 ------------------
 

@@ -4,5 +4,7 @@
 .pytest_cache
 .coverage
 .tox
+config.ini
 coverage-report
 report.xml
+env
