@@ -35,11 +35,6 @@ class UptimeRobotCollector:
     API_URL = "https://api.uptimerobot.com/v2"
     STATUS_UP = 2
     MONITOR_TYPES = {1: "http", 2: "http keyword", 3: "ping", 4: "port"}
-    STATUS_TYPES = {
-        0: "paused",
-        1: "not checked yet",
-        2: "up",
-    }
 
     def __init__(self, api_key):
         self.api_key = api_key

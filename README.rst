@@ -48,7 +48,7 @@ Configure Prometheus
         static_configs:
           - targets: ['localhost:9429']
 
-The following metrics are exported, each with labels ``{monitor_name="example.com",monitor_type="http",monitor_url="https://example.com"}``:
+The following metrics are exported, each with labels ``{monitor_name="example.com",monitor_type="http",monitor_paused="false", monitor_url="https://example.com"}``:
 
 * ``uptimerobot_up`` gauge (1=up, 0=down)
 * ``uptimerobot_status`` gauge
