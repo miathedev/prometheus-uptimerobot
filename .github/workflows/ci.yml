@@ -7,14 +7,14 @@ on:
     branches: [ main ]
 
 env:
-  PYTHON_VERSION: "3.9"
+  PYTHON_VERSION: "3.12"
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.12"]
 
     steps:
     - uses: actions/checkout@v4
@@ -34,7 +34,7 @@ jobs:
         pytest --cov=src/ws/prometheus_uptimerobot --cov-report=xml --cov-report=term-missing
 
     - name: Upload coverage to Codecov
-      if: matrix.python-version == '3.9'
+      if: matrix.python-version == '3.12'
       uses: codecov/codecov-action@v4
       with:
         file: ./coverage.xml
