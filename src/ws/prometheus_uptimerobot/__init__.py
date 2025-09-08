@@ -1,1 +1,3 @@
-__version__ = '1.4.0.dev0'
+"""UptimeRobot Prometheus Exporter."""
+
+__version__ = "1.3.1"

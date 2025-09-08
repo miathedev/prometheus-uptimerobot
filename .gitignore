@@ -6,3 +6,5 @@
 .tox
 coverage-report
 report.xml
+config.ini
+coverage.xml

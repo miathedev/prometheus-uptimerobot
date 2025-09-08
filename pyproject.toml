@@ -1,14 +1,16 @@
 [project]
 name = "ws.prometheus_uptimerobot"
 description = "Export uptimerobot.com monitor results as prometheus.io metrics"
+dynamic = ["dependencies", "version", "readme"]
 
-dependencies = [
-  "prometheus-client",
-  "requests",
-]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
 optional-dependencies = {test=[
-  "pytest",
-  "pytest-cov",
+  "pytest>=6.0",
+  "pytest-cov>=4.0",
+  "pytest-mock>=3.0",
+  "responses>=0.20",
   "setuptools",
   "werkzeug",
 ]}
@@ -18,7 +20,7 @@ license = {text=" BSD-3-Clause"}
 urls = {Repository="https://github.com/wosc/prometheus-uptimerobot"}
 requires-python = ">=3.7"
 
-dynamic = ["version", "readme"]
+dynamic = ["dependencies", "version", "readme"]
 
 [project.scripts]
 uptimerobot_exporter_cgi = "ws.prometheus_uptimerobot.web:cgi"
@@ -53,7 +55,32 @@ dependencies = ["pip>=23"]
 features = ["test"]
 
 [tool.pytest.ini_options]
-addopts = "--tb=native --cov=src --cov-report=html"
+minversion = "6.0"
+addopts = [
+    "--strict-markers", 
+    "--strict-config",
+    "--verbose",
+    "--tb=short",
+    "--cov=src/ws/prometheus_uptimerobot",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-report=xml",
+    "--cov-fail-under=85"
+]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests"
+]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning"
+]
 
 
 [tool.hatch.envs.release]
