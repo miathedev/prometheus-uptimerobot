@@ -21,7 +21,8 @@ test = [
   "responses>=0.20",
   "setuptools",
   "werkzeug",
-  "flask"
+  "flask",
+  "prometheus-client",
 ]
 
 [project.scripts]
