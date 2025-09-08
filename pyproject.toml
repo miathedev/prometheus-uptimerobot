@@ -6,14 +6,15 @@ dynamic = ["dependencies", "version", "readme"]
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
-optional-dependencies = {test=[
+[project.optional-dependencies]
+test = [
   "pytest>=6.0",
   "pytest-cov>=4.0",
   "pytest-mock>=3.0",
   "responses>=0.20",
   "setuptools",
   "werkzeug",
-]}
+]
 
 authors = [{name="Wolfgang Schnerring", email="wosc@wosc.de"}]
 license = {text=" BSD-3-Clause"}
