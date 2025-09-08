@@ -1,9 +1,11 @@
-from unittest import mock
 import json
+from unittest import mock
+
 import pkg_resources
 import pytest
 import werkzeug.test
 import werkzeug.wrappers
+
 import ws.prometheus_uptimerobot.web
 
 
