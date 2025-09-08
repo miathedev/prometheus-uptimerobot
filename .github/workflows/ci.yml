@@ -67,7 +67,9 @@ jobs:
       run: flake8 --ignore=E501,W503 src tests
 
     - name: Run mypy
-      run: mypy src
+      run: |
+        mypy --non-interactive --install-types
+        mypy src
 
   security:
     runs-on: ubuntu-latest
