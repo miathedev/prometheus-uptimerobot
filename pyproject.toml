@@ -7,7 +7,6 @@ authors = [
     {name="Mia Metzler", email="mia@metzler.systems"}
 ]
 license = {text=" BSD-3-Clause"}
-dynamic = ["dependencies", "version", "readme"]
 urls = {Repository="https://github.com/wosc/prometheus-uptimerobot"}
 requires-python = ">=3.7"
 
