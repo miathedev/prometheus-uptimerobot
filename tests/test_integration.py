@@ -5,8 +5,7 @@ import time
 import pytest
 import responses
 
-from ws.prometheus_uptimerobot.web import (API_BASE_URL, UptimeRobotCollector,
-                                           create_app)
+from ws.prometheus_uptimerobot.web import API_BASE_URL, UptimeRobotCollector, create_app
 
 
 class TestIntegration:

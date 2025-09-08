@@ -6,9 +6,13 @@ import pytest
 import requests
 import responses
 
-from ws.prometheus_uptimerobot.web import (API_BASE_URL, UptimeRobotAPIError,
-                                           UptimeRobotCollector, create_app,
-                                           main)
+from ws.prometheus_uptimerobot.web import (
+    API_BASE_URL,
+    UptimeRobotAPIError,
+    UptimeRobotCollector,
+    create_app,
+    main,
+)
 
 
 class TestErrorHandling:

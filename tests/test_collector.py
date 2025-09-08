@@ -6,10 +6,13 @@ import pytest
 import requests
 import responses
 
-from ws.prometheus_uptimerobot.web import (API_BASE_URL, NAMESPACE,
-                                           PrometheusGauge,
-                                           UptimeRobotAPIError,
-                                           UptimeRobotCollector)
+from ws.prometheus_uptimerobot.web import (
+    API_BASE_URL,
+    NAMESPACE,
+    PrometheusGauge,
+    UptimeRobotAPIError,
+    UptimeRobotCollector,
+)
 
 
 class TestUptimeRobotCollector:
@@ -121,7 +124,8 @@ class TestUptimeRobotCollector:
         assert result == sample_api_response
         assert len(responses.calls) == 1
         assert (
-            responses.calls[0].request.headers["authorization"] == f"Bearer {test_api_key}"
+            responses.calls[0].request.headers["authorization"]
+            == f"Bearer {test_api_key}"
         )
 
     @responses.activate

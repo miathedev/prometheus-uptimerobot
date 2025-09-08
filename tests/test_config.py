@@ -5,9 +5,13 @@ import tempfile
 from configparser import ConfigParser
 from unittest.mock import patch
 
-from ws.prometheus_uptimerobot.web import (DEFAULT_HOST, DEFAULT_PORT,
-                                           get_api_key, load_config,
-                                           parse_arguments)
+from ws.prometheus_uptimerobot.web import (
+    DEFAULT_HOST,
+    DEFAULT_PORT,
+    get_api_key,
+    load_config,
+    parse_arguments,
+)
 
 
 class TestConfiguration:

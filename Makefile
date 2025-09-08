@@ -39,7 +39,7 @@ format:
 
 # Run linting
 lint:
-	flake8 --ignore=E501 src tests
+	flake8 --ignore=E501,W503 src tests
 	mypy --install-types
 	mypy src
 

@@ -4,8 +4,7 @@ from unittest.mock import MagicMock, patch
 
 import responses
 
-from ws.prometheus_uptimerobot.web import (API_BASE_URL, MIMETYPE_TEXT_PLAIN,
-                                           create_app)
+from ws.prometheus_uptimerobot.web import API_BASE_URL, MIMETYPE_TEXT_PLAIN, create_app
 
 
 class TestFlaskApp:
