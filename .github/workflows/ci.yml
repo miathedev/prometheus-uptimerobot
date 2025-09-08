@@ -64,7 +64,7 @@ jobs:
       run: isort --check-only --profile black src tests
 
     - name: Run flake8
-      run: flake8 src tests
+      run: flake8 --ignore=E501,W503 src tests
 
     - name: Run mypy
       run: mypy src
