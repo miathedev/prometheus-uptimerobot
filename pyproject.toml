@@ -2,6 +2,12 @@
 name = "ws.prometheus_uptimerobot"
 description = "Export uptimerobot.com monitor results as prometheus.io metrics"
 dynamic = ["dependencies", "version", "readme"]
+authors = [{name="Wolfgang Schnerring", email="wosc@wosc.de"},
+        {name="Mia Metzler", email=" email="mia@metzler.systems"}]
+license = {text=" BSD-3-Clause"}
+dynamic = ["dependencies", "version", "readme"]
+urls = {Repository="https://github.com/wosc/prometheus-uptimerobot"}
+requires-python = ">=3.7"
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
@@ -15,13 +21,6 @@ test = [
   "setuptools",
   "werkzeug",
 ]
-
-authors = [{name="Wolfgang Schnerring", email="wosc@wosc.de"}]
-license = {text=" BSD-3-Clause"}
-urls = {Repository="https://github.com/wosc/prometheus-uptimerobot"}
-requires-python = ">=3.7"
-
-dynamic = ["dependencies", "version", "readme"]
 
 [project.scripts]
 uptimerobot_exporter_cgi = "ws.prometheus_uptimerobot.web:cgi"
