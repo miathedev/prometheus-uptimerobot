@@ -19,7 +19,7 @@ from prometheus_client.registry import Collector
 
 # Constants
 API_BASE_URL = "https://api.uptimerobot.com/v3"
-DEFAULT_HOST = "0.0.0.0"
+DEFAULT_HOST = os.environ.get("UPTIMEROBOT_HOST", "127.0.0.1")
 DEFAULT_PORT = 9429
 LOG_FORMAT = "%(asctime)s %(levelname)-5.5s [%(name)s] %(message)s"
 NAMESPACE = "uptimerobot"
@@ -400,8 +400,8 @@ def get_api_key(config: Optional[ConfigParser]) -> Optional[str]:
     if config:
         try:
             return config.get("default", "api_key")
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning(f"Failed to get api_key from config: {e}")
 
     return None
 

@@ -39,11 +39,16 @@ Installation
 Configure API Key
 -----------------
 
-**Option 1: Environment Variable (Recommended)**
+
+**Option 1: Environment Variables (Recommended)**
 
 Set your UptimeRobot API key as an environment variable::
 
-    export UPTIMEROBOT_API_KEY=ur12345-abcdef123456789
+  export UPTIMEROBOT_API_KEY=ur12345-abcdef123456789
+
+You can also set the bind host using the UPTIMEROBOT_HOST environment variable (default: 127.0.0.1, Docker default: 0.0.0.0)::
+
+  export UPTIMEROBOT_HOST=0.0.0.0
 
 **Option 2: Configuration File**
 
@@ -60,11 +65,13 @@ Get your API key from the `Uptime Robot API documentation`_.
 Run the Exporter
 ----------------
 
+
 **Using Environment Variable:**
 
 .. code-block:: bash
 
-    python src/ws/prometheus_uptimerobot/web.py --host 0.0.0.0 --port 9429
+  export UPTIMEROBOT_HOST=0.0.0.0  # Optional, default is 127.0.0.1
+  python src/ws/prometheus_uptimerobot/web.py --port 9429
 
 **Using Configuration File:**
 
@@ -87,6 +94,7 @@ Pre-built images are available on GitHub Container Registry. You can pull and ru
 .. code-block:: bash
 
   docker pull ghcr.io/miathedev/prometheus-uptimerobot:main
+
   docker run --rm -p 9429:9429 \
     -e UPTIMEROBOT_API_KEY=ur12345-abcdef123456789 \
     ghcr.io/miathedev/prometheus-uptimerobot:main
@@ -111,10 +119,11 @@ Build and Run with Config File
     docker build -t uptimerobot-exporter .
     
     # Run with config file
-    docker run --rm -p 9429:9429 \
-        -v /path/to/config.ini:/config.ini \
-        uptimerobot-exporter \
-        python src/ws/prometheus_uptimerobot/web.py --config /config.ini
+
+  docker run --rm -p 9429:9429 \
+    -v /path/to/config.ini:/config.ini \
+    uptimerobot-exporter \
+    python src/ws/prometheus_uptimerobot/web.py --config /config.ini
 
 Run with Environment Variable
 -----------------------------
@@ -122,10 +131,11 @@ Run with Environment Variable
 .. code-block:: bash
 
     # Run with environment variable (recommended)
-    docker run --rm -p 9429:9429 \
-        -e UPTIMEROBOT_API_KEY=ur12345-abcdef123456789 \
-        uptimerobot-exporter \
-        python src/ws/prometheus_uptimerobot/web.py
+
+  docker run --rm -p 9429:9429 \
+    -e UPTIMEROBOT_API_KEY=ur12345-abcdef123456789 \
+    uptimerobot-exporter \
+    python src/ws/prometheus_uptimerobot/web.py
 
 Docker Compose
 --------------
