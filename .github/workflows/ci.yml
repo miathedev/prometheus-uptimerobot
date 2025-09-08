@@ -86,8 +86,8 @@ jobs:
         pip install bandit safety
 
     - name: Run bandit security linter
-  run: bandit -r src/ -x src/ws/prometheus_uptimerobot/tests/,tests/
-
+      run: bandit -r src/ -x src/ws/prometheus_uptimerobot/tests/,tests/
+      
     - name: Check for known security vulnerabilities
       run: safety check
 
