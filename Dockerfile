@@ -22,6 +22,7 @@ COPY src/ws/prometheus_uptimerobot /app/src/ws/prometheus_uptimerobot
 EXPOSE 9429
 
 # Add healthcheck for /health endpoint
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
 	CMD curl --fail http://localhost:9429/health || exit 1
 
