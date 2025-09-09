@@ -14,10 +14,16 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Bundle app source inside Docker image
-COPY src .
+
+# Copy the app source to the correct location
+COPY src/ws/prometheus_uptimerobot /app/src/ws/prometheus_uptimerobot
 
 # Make port 9429 available to the world outside this container
 EXPOSE 9429
 
-# Run main.py when the container launches
-CMD ["python", "web.py"]
+# Add healthcheck for /health endpoint
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+	CMD curl --fail http://localhost:9429/health || exit 1
+
+# Run the web server when the container launches
+CMD ["python", "src/ws/prometheus_uptimerobot/web.py"]
