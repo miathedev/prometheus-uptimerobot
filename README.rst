@@ -206,8 +206,8 @@ The exporter provides the following metrics, each labeled with monitor informati
     # Monitors that are down
     uptimerobot_up == 0
     
-    # SSL certificates expiring in 30 days
-    (uptimerobot_ssl_expire - time()) / 86400 < 30
+    # SSL certificates expiring in 30 days, the ssl_expire time is not updated in paused monitors
+    (uptimerobot_ssl_expire{monitor_paused="false"} - time()) / 86400 < 30
 
 Monitoring and Alerting
 =======================
